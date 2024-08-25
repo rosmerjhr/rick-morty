@@ -112,6 +112,22 @@ const debouncedFilterFn = debounceFunction(filterCharactersByName, 300);
 
 const handleTextInput = ({ target: { value } }) => debouncedFilterFn(value);
 
+// Funciones para el botón
+
+function goToTheTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showButton({ heigth, scroll }) {
+  const button = document.querySelector("#go-to-top");
+
+  if (scroll > heigth) {
+    return button.classList.remove("hide-button");
+  }
+
+  button.classList.add("hide-button");
+}
+
 // punto de entrada
 function main() {
   getCharacters(BASE_URL);
@@ -127,6 +143,12 @@ function main() {
         getCharacters(nextPageUrl);
       }
     }
+  });
+
+  window.addEventListener("scrollend", () => {
+    const { innerHeight, scrollY } = window;
+
+    showButton({ heigth: innerHeight, scroll: scrollY });
   });
 
   // listener para el input
