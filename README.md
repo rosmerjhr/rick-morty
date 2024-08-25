@@ -7,6 +7,7 @@ Este es un proyecto desarrollado en JavaScript Vanilla que consume la API públi
 - **Scroll infinito**: A medida que el usuario se desplaza hacia abajo, se cargan automáticamente más personajes desde la API.
 - **Vista de detalle**: Al hacer clic en una tarjeta de un personaje, se muestra una vista detallada con información adicional sobre ese personaje.
 - **Filtro por nombre**: Un input de búsqueda que permite filtrar los personajes por nombre, realizando peticiones a la API en tiempo real.
+- **Filtro por estado**: Unos input de tipo radio que permite filtrar los personajes por su estado, realizando peticiones a la API en tiempo real.
 
 ## Instalación
 
