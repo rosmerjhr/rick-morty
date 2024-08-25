@@ -8,6 +8,15 @@ function closeDetail() {
   document.querySelector("#modal-character-details").classList.add("hide");
 }
 
+// logica para limpiar la lista.
+function cleanList() {
+  htmlList.innerHTML = "";
+}
+
+function cleanTextInput() {
+  document.querySelector("#search").value = "";
+}
+
 function drawCharacterModalDetails({ image, name, status, species, gender }) {
   return `
       <div class="details-close" onClick="closeDetail()">
@@ -101,10 +110,38 @@ function debounceFunction(fn, delay) {
   };
 }
 
+function getInputRadioChecked() {
+  const radios = Array.from(
+    document.querySelectorAll("input[name='state-condition']")
+  );
+
+  return radios.find(({ checked }) => checked)?.value || "";
+}
+
 function filterCharactersByName(name) {
-  // logica para limpiar la lista.
-  htmlList.innerHTML = "";
-  const url = name ? `${BASE_URL}/?name=${name}` : BASE_URL;
+  cleanList();
+
+  let url = BASE_URL;
+
+  if (name) {
+    url += `/?name=${name}`;
+    const status = getInputRadioChecked();
+    if (status) url += `&status=${status}`;
+  }
+
+  getCharacters(url);
+}
+
+function filterCharactersByStatus(value) {
+  cleanList();
+  cleanTextInput();
+
+  const status = value ?? getInputRadioChecked();
+
+  console.log(status);
+
+  const url = status ? `${BASE_URL}/?status=${status}` : BASE_URL;
+
   getCharacters(url);
 }
 
@@ -151,7 +188,7 @@ function main() {
     showButton({ heigth: innerHeight, scroll: scrollY });
   });
 
-  // listener para el input
+  // listener para el text input
   document.querySelector("#search").addEventListener("input", handleTextInput);
 }
 

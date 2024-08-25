@@ -11,8 +11,16 @@ body {
     background: #F6F6F6;
 }
 
-/* input */
-#input {
+/* filter */
+#filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    margin-bottom: 10px;
+}
+
+#text-input {
     width: 50%;
     min-width: 340px;
     height: 50px;
@@ -26,7 +34,7 @@ body {
     box-shadow: 0px 0px 10px 0.3px #ccc;
 }
 
-#input-container {
+#text-input .container {
     width: 100%;
     padding: 10px;
     border-color: transparent;
@@ -37,7 +45,7 @@ body {
     align-items: center;  
 }
 
-#input-container .pipe {
+#text-input .container .pipe {
     display: inline-block;
     background: #696969;
     width: 2px;
@@ -45,7 +53,7 @@ body {
     margin-left: 12px;
 }
 
-#input-container input#search {
+#text-input .container input#search {
     width: 260px;
     background: #F6F6F6;
     border-color: transparent;
@@ -56,6 +64,72 @@ body {
     font-size: 16px;
     padding-left: 12px;
 
+}
+
+#radio-input input {
+    display: none;
+}
+
+#radio-input label {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 3px;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: relative;
+}
+
+#radio-input input#all:checked + label {
+    color: black;
+    text-shadow: 0px 1px 10px black;
+}
+
+#radio-input input#alive:checked + label {
+    color: #6bc30c;
+    text-shadow: 0px 1px 10px #6bc30c;
+}
+
+#radio-input input#dead:checked + label {
+    color: red;
+    text-shadow: 0px 1px 10px red;
+}
+
+#radio-input input#unknown:checked + label {
+    color: #9a9a9a;
+    text-shadow: 0px 1px 10px #9a9a9a;
+}
+
+/* label input radio after */
+
+#radio-input label::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    bottom: 1px;
+    left: 0;
+    transition: width .3s ease-in-out;
+}
+
+#radio-input input#all:hover + label::after {
+    width: 100%;
+    background: black;
+}
+
+#radio-input input#alive:hover + label::after {
+    width: 100%;
+    background: #6bc30c;
+}
+
+#radio-input input#dead:hover + label::after {
+    width: 100%;
+    background: red;
+}
+
+#radio-input input#unknown:hover + label::after {
+    width: 100%;
+    background:#9a9a9a;
 }
 
 /* List */

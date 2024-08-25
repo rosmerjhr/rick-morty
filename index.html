@@ -13,22 +13,39 @@
 </head>
 <body>
     <main>
-        <section id="input">
-            <div id="input-container">
-                <i 
-                    class="fa-solid fa-magnifying-glass fa-lg" 
-                    style="color: #696969;"
-                >
-                </i>
-                <span class="pipe"></span>
-                <input 
-                    type="text" 
-                    id="search" 
-                    placeholder="Search your favorites characters..." 
-                    autocomplete="off"
-                >
+        <section id="filter">
+            <div id="text-input">
+                <div class="container">
+                    <i 
+                        class="fa-solid fa-magnifying-glass fa-lg" 
+                        style="color: #696969;"
+                    >
+                    </i>
+                    <span class="pipe"></span>
+                    <input 
+                        type="text" 
+                        id="search" 
+                        placeholder="Search your favorites characters..." 
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+            <div id="radio-input">
+                <input type="radio" name="state-condition" id="all" value="" checked>
+                <label for="all" onclick="filterCharactersByStatus('')">All</label>
+
+                <input type="radio" name="state-condition" id="alive" value="alive">
+                <label for="alive" onclick="filterCharactersByStatus('alive')">Alive</label>
+
+                <input type="radio" name="state-condition" id="dead" value="dead">
+                <label for="dead" onclick="filterCharactersByStatus('dead')">Dead</label>
+
+                <input type="radio" name="state-condition" id="unknown" value="unknown">
+                <label for="unknown" onclick="filterCharactersByStatus('unknown')">Unknown</label>
             </div>
         </section>
+        
+        </div>
         <article id="modal-character-details" class="hide">
             
         </article>
