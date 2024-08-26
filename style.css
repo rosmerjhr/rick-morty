@@ -162,6 +162,7 @@ body {
     width: 340px;
     height: 300px;
     margin: 0;
+    object-fit: cover;
 }
 
 .character-container .title {

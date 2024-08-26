@@ -27,7 +27,7 @@ function drawCharacterModalDetails({ image, name, status, species, gender }) {
         ${name}
       </h1>
       <section class="properties">
-        <img src="${image}">
+        <img src="${image}" loading="lazy" alt="photo of ${name}">
         <div>
           <p>Status: <span>${status}</span></p>   
           <p>Species: <span>${species}</span></p>
@@ -64,7 +64,7 @@ const showCharacterModalDetails = (id) => async () => {
 function drawCharacterListContainer({ image, name }) {
   return `
     <article class="character-container">
-      <img class="image" src="${image}">
+      <img class="image" src="${image}" loading="lazy" alt="photo of ${name}">
       <h2 class="title">${name}</h2>
     </article>
   `;
@@ -137,8 +137,6 @@ function filterCharactersByStatus(value) {
   cleanTextInput();
 
   const status = value ?? getInputRadioChecked();
-
-  console.log(status);
 
   const url = status ? `${BASE_URL}/?status=${status}` : BASE_URL;
 
